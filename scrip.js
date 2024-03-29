@@ -3,15 +3,15 @@ let pessoas = 0
 let porcentagem = 0
 
 const contaInput = document.querySelector("#conta")
-contaInput.addEventListener("input", )
+contaInput.addEventListener("input", receberValorConta)
 
 function receberValorConta(evento) {
     conta = Number(evento.target.value)
-    calucular()
+    calcular()
 }
 
 const pessoasInput = document.querySelector("#pessoas")
-pessoasInput.addEventListener("Input", receberQuantidadePessoas)
+pessoasInput.addEventListener("input", receberQuantidadePessoas)
 
 function receberQuantidadePessoas(evento) {
     const paragrafoErro = document.querySelector(".pessoas #erro")
@@ -21,12 +21,12 @@ function receberQuantidadePessoas(evento) {
         paragrafoErro.style.display = "block"
         divErro.setAttribute("id", "erro-div")
     } else {
-        paragrafoErro.style.display = "bnone"
+        paragrafoErro.style.display = "none"
         divErro.setAttribute("id", "")
         pessoas = Number(evento.target.value)
     }
 
-    calucular()
+    calcular()
 }
 
 const botoesGorjeta = document.querySelectorAll(".gorjeta input[type='button']")
@@ -38,9 +38,9 @@ function receberPorcentagem(evento) {
     botoesGorjeta.forEach(botao => {
         botao.classList.remove("botao-ativo")
 
-        if(botao.value === evento.target.value) {
+        if(botao.value === evento.target.value) 
             botao.classList.add("botao-ativo")
-        }
+        
     })
 
     if(evento.target.value !== "") {
@@ -49,13 +49,13 @@ function receberPorcentagem(evento) {
         porcentagem = 0
     }
 
-    calucular()
+    calcular()
 }
 
 const gorjetaInput = document.querySelector("#outra")
 gorjetaInput.addEventListener("input", receberPorcentagem)
 
-function calucular () {
+function calcular () {
     if(conta !== 0 && porcentagem !== 0 && pessoas !==0) {
         const strongGorjetaTotal = document.querySelector(".gorjeta-total > strong")
         strongGorjetaTotal.innerHTML = `R$ ${(conta * porcentagem / pessoas).toFixed(2)}`
@@ -66,7 +66,7 @@ function calucular () {
 }
 
 const botaoLimpar = document.querySelector(".resultados button")
-bota .addEventListener("click", limpar)
+botaoLimpar.addEventListener("click", limpar)
 
 function limpar() {
     contaInput.value = ""
